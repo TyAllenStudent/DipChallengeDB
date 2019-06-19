@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Week16_DBChallengeEntities-Web.config Connection String" description="Week16_DBChallengeEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.DBModel.csdl|res://*/Models.DBModel.ssdl|res://*/Models.DBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=swinburne-work-server.database.windows.net;initial catalog=Week16_DBChallenge;persist security info=True;user id=TyAllen;password=Qwerty123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Diploma\ at\ 28\ April\\OOP\\DipChallengeDB\\DipChallengeDB\\DBAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Week16_DBChallengeEntities']/@connectionString" />
+  </parameter>
+</parameters>
