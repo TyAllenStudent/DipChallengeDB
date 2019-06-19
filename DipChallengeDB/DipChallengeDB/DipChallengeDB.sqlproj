@@ -57,4 +57,13 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Category.sql" />
+    <Build Include="Product.sql" />
+    <Build Include="Order.sql" />
+    <Build Include="Shipping.sql" />
+    <Build Include="Customer.sql" />
+    <Build Include="Region.sql" />
+    <Build Include="Segment.sql" />
+  </ItemGroup>
 </Project>

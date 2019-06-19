@@ -14,18 +14,18 @@ Customer (CustID PK, FullName, Country, City, State, PostCode)
 
 Region (Region PK)
 
-Segment (SegID PK, SegName)
+Segment (SegtID PK, SegName)
 
 
 
-Create Table [dbo.][Category]
+Create Table [dbo].[Category]
 (
 	[CatID] INT Not Null,
 	[CatName] NVARCHAR (50) Not Null,
 	Constraint PK_Category Primary Key (CatID),
 )
 
-Create Table [dbo.][Product]
+Create Table [dbo].[Product]
 (
 	[ProdID] NVARCHAR (50) Not Null,
 	[CatID] INT Not Null,
@@ -35,7 +35,7 @@ Create Table [dbo.][Product]
 	Constraint FK_Product_Category Foreign Key (CatID) References Category (CatID)
 )
 
-Create Table [dbo.][Order]
+Create Table [dbo].[Order]
 (
 	[CustID] NVARCHAR (10) Not Null,
 	[ProdID] NVARCHAR (50) Not Null,
@@ -49,12 +49,13 @@ Create Table [dbo.][Order]
 	Constraint FK_Order_ShipMode Foreign Key (ShipMode) References Shipping (ShipMode)	
 )
 
-Create Table [dbo.][Shipping]
+Create Table [dbo].[Shipping]
 (
-	[ShipMode] NVARCHAR (50)
+	[ShipMode] NVARCHAR (50),
+	Constraint PK_Shipping Primary Key (ShipMode)
 )
 
-Create Table [dbo.][Customer]
+Create Table [dbo].[Customer]
 (
 	[CustID] NVARCHAR (10) Not Null,
 	[FullName] NVARCHAR (100) Not Null,
@@ -65,21 +66,21 @@ Create Table [dbo.][Customer]
 	[PostCode] int, 
 	[Region] NVARCHAR (20),
 	Constraint PK_Customer Primary Key (CustID),
-	Constraint FK_Customer_Segment Foreign Key (SegID) References Segment (SegID),
+	Constraint FK_Customer_Segment Foreign Key (SegtID) References Segment (SegtID),
 	Constraint FK_Customer_Region Foreign Key (Region) References Region (Region)	
 )
 	
-Create Table [dbo.][Region]
+Create Table [dbo].[Region]
 (
 	[Region] NVARCHAR (20),
 	Constraint PK_Region Primary Key (Region)
 )
 	
-Create Table [dbo.][Segment]
+Create Table [dbo].[Segment]
 (
 	[SegtID] int Not Null,
 	[SegName] NVARCHAR (50)
-	Constraint PK_Segment Primary Key (SegID)
+	Constraint PK_Segment Primary Key (SegtID)
 )
 	
 	
