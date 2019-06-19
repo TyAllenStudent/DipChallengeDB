@@ -1,0 +1,108 @@
+Schema
+
+Category (CatID PK, catName)
+
+Product (ProdID PK, Description, UnitPrice)
+
+Order (OrderDate + ProdID + CustID PK, Quantity, ShipDate)
+Foreign Key ProdID References Product ProdID
+Foreign Key CustID References Customer CustID
+
+Shipping (ShipMode PK)
+
+Customer (CustID PK, FullName, Country, City, State, PostCode)
+
+Region (Region PK)
+
+Segment (SegID PK, SegName)
+
+
+
+Create Table [dbo.][Category]
+(
+	[CatID] INT Not Null,
+	[CatName] NVARCHAR (50) Not Null,
+	Constraint PK_Category Primary Key (CatID),
+)
+
+Create Table [dbo.][Product]
+(
+	[ProdID] NVARCHAR (50) Not Null,
+	[CatID] INT Not Null,
+	[Description] NVARCHAR (100),
+	[UnitPrice] Money,
+	Constraint PK_Product Primary Key (ProdID),
+	Constraint FK_Product_Category Foreign Key (CatID) References Category (CatID)
+)
+
+Create Table [dbo.][Order]
+(
+	[CustID] NVARCHAR (10) Not Null,
+	[ProdID] NVARCHAR (50) Not Null,
+	[OrderDate] Date Not Null,
+	[Quantity] int Not Null,
+	[ShipDate] Date,
+	[ShipMode] NVARCHAR (50),
+	Constraint PK_Order Primary Key (CustID, ProdID, OrderDate),
+	Constraint FK_Order_CustID Foreign Key (CustID) References Customer (CustID),
+	Constraint FK_Order_ProdID Foreign Key (ProdID) References Product (ProdID),
+	Constraint FK_Order_ShipMode Foreign Key (ShipMode) References Shipping (ShipMode)	
+)
+
+Create Table [dbo.][Shipping]
+(
+	[ShipMode] NVARCHAR (50)
+)
+
+Create Table [dbo.][Customer]
+(
+	[CustID] NVARCHAR (10) Not Null,
+	[FullName] NVARCHAR (100) Not Null,
+	[SegtID] int Not Null,
+	[Country] NVARCHAR (50) Not Null,
+	[City] NVARCHAR (50) Not Null,
+	[State] NVARCHAR (50) Not Null,
+	[PostCode] int, 
+	[Region] NVARCHAR (20),
+	Constraint PK_Customer Primary Key (CustID),
+	Constraint FK_Customer_Segment Foreign Key (SegID) References Segment (SegID),
+	Constraint FK_Customer_Region Foreign Key (Region) References Region (Region)	
+)
+	
+Create Table [dbo.][Region]
+(
+	[Region] NVARCHAR (20),
+	Constraint PK_Region Primary Key (Region)
+)
+	
+Create Table [dbo.][Segment]
+(
+	[SegtID] int Not Null,
+	[SegName] NVARCHAR (50)
+	Constraint PK_Segment Primary Key (SegID)
+)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
